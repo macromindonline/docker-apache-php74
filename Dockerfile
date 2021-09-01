@@ -6,7 +6,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 #COPY sources.list /etc/apt/
 
 RUN apt-get update --fix-missing
-RUN apt-get -y install git curl apache2 php php7.4-mysql php7.4-curl php7.4-intl php7.4-json php7.4-imap php7.4-zip php7.4-gd php7.4-xml php7.4-mbstring libapache2-mod-php7.4 php7.4-sqlite3 php7.4-intl php7.4-mongodb php-pear php-redis php7.4-dev unzip
+RUN apt-get -y install git curl apache2 php php7.4-mysql php7.4-curl php7.4-intl php7.4-json php7.4-imap php7.4-zip php7.4-gd php7.4-xml php7.4-mbstring libapache2-mod-php7.4 php7.4-sqlite3 php7.4-intl php7.4-mongodb php-pear php7.4-dev unzip
+RUN apt-get -y install php-redis
 RUN ln -fs /usr/share/zoneinfo/America/Sao_Paulo /etc/localtime && dpkg-reconfigure --frontend noninteractive tzdata && apt-get clean && rm -rf /var/lib/apt/lists/*
 #RUN /usr/sbin/a2dismod 'mpm_*' && /usr/sbin/a2enmod mpm_prefork
 RUN /usr/bin/pecl install mongodb
