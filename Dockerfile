@@ -3,7 +3,6 @@ MAINTAINER MACROMIND Online <idc@macromind.online>
 LABEL description="MACROMIND Online Dev - Ubuntu 20 + Apache2 + PHP 7.4"
 
 ENV DEBIAN_FRONTEND=noninteractive
-#COPY sources.list /etc/apt/
 
 RUN apt-get update --fix-missing
 RUN apt-get -y install git curl apache2 php php7.4-mysql php7.4-curl php7.4-intl php7.4-json php7.4-imap php7.4-zip php7.4-gd php7.4-xml php7.4-mbstring libapache2-mod-php7.4 php7.4-sqlite3 php7.4-intl php7.4-mongodb php-pear php7.4-dev php-redis unzip
@@ -19,7 +18,7 @@ RUN /bin/mv composer.phar /usr/local/bin/composer
 RUN chown www-data:www-data /usr/sbin/apachectl && rm -rf /var/www/html
 
 COPY apache2-foreground /usr/local/bin/
-COPY php.ini /etc/php/7.2/apache2/
+COPY php.ini /etc/php/7.4/apache2/
 
 ENV APACHE_LOCK_DIR "/var/lock"
 ENV APACHE_RUN_DIR "/var/run/apache2"
