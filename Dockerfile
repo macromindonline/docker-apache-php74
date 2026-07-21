@@ -20,6 +20,8 @@ RUN chown www-data:www-data /usr/sbin/apachectl && rm -rf /var/www/html
 COPY apache2-foreground /usr/local/bin/
 COPY php.ini /etc/php/7.4/apache2/
 
+RUN sed -i -e 's/\r$//' /usr/local/bin/apache2-foreground && chmod +x /usr/local/bin/apache2-foreground
+
 ENV APACHE_LOCK_DIR "/var/lock"
 ENV APACHE_RUN_DIR "/var/run/apache2"
 ENV APACHE_PID_FILE "/var/run/apache2/apache2.pid"
